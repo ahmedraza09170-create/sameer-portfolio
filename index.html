@@ -7,103 +7,176 @@
   <meta name="description" content="Portfolio of Sameer Hussain — Embedded systems, Java, and community-focused innovation." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0f172a;        /* slate-900 */
-      --panel: #111827;     /* gray-900 */
-      --text: #e5e7eb;      /* gray-200 */
-      --muted: #9ca3af;     /* gray-400 */
-      --accent: #22c55e;    /* green-500 */
-      --link: #38bdf8;      /* sky-400 */
-      --card: #1f2937;      /* gray-800 */
-      --border: #374151;    /* gray-700 */
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --link: #38bdf8;
+      --card: #1f2937;
+      --border: #374151;
     }
+
     * { box-sizing: border-box; }
     body {
-      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
       background: linear-gradient(180deg, var(--bg), #0b1225);
       color: var(--text);
     }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
     .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+
+    /* Header */
     header {
-      display: grid; grid-template-columns: 1fr; gap: 16px; padding: 32px 0;
+      padding: 32px 0;
       border-bottom: 1px solid var(--border);
     }
-    .brand { display: flex; align-items: center; gap: 16px; }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* NEW Professional Avatar */
     .avatar {
-      width: 72px; height: 72px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #22c55e, #14532d);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
       border: 2px solid var(--border);
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
-    h1 { margin: 0; font-size: 32px; }
-    .subtitle { margin: 4px 0 0; color: var(--muted); font-size: 16px; }
-    .contacts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 { margin: 0; font-size: 34px; }
+    .subtitle { margin: 6px 0 0; color: var(--muted); }
+
+    .contacts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
     .pill {
-      display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid var(--border);
-      border-radius: 999px; background: rgba(255,255,255,0.03);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
     }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+    /* Layout Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
     @media (min-width: 860px) {
       .grid { grid-template-columns: 2fr 1fr; }
     }
-    section { margin: 24px 0; }
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+
+    /* Cards */
+    section.card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
       box-shadow: 0 1px 0 rgba(0,0,0,0.2);
     }
-    h2 { margin: 0 0 12px 0; font-size: 22px; }
+
+    h2 { margin: 0 0 12px; font-size: 22px; }
     .muted { color: var(--muted); }
     .list { display: grid; gap: 12px; }
-    .tag { display: inline-block; padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text); background: #111827; }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #111827;
+      font-size: 13px;
+    }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
     .proj {
-      display: grid; gap: 8px; border-left: 3px solid var(--accent); padding-left: 12px;
+      display: grid;
+      gap: 8px;
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
     }
-    .row { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
-    .role { font-weight: 600; }
-    footer { border-top: 1px solid var(--border); padding: 24px 0; margin-top: 16px; color: var(--muted); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      margin-top: 20px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
     .cta {
-      display: inline-flex; gap: 8px; align-items: center; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--accent);
-      color: var(--text); background: rgba(34,197,94,0.08);
+      display: inline-flex;
+      padding: 10px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      background: rgba(34,197,94,0.08);
+      color: var(--text);
+      margin-top: 10px;
     }
-    .badge { font-size: 12px; color: var(--muted); }
   </style>
 </head>
+
 <body>
   <div class="container">
+
+    <!-- HEADER -->
     <header>
       <div class="brand">
-        <div class="avatar" aria-hidden="true"></div>
+        <div class="avatar">
+          <img src="7507b0b7-501a-4e0a-a03b-c3f27278b9e2.jpg" alt="Profile Photo">
+        </div>
+
         <div>
           <h1>Sameer Hussain</h1>
           <p class="subtitle">Embedded systems & Java developer • Community-driven innovator</p>
+
           <div class="contacts">
-            <span class="pill">📍 Karachi, Sindh, Pakistan</span>
+            <span>📍 Hyderabad, Sindh, Pakistan</span>
             <a class="pill" href="mailto:sameer@example.com">✉️ sameer@example.com</a>
-            <a class="pill" href="https://www.linkedin.com/in/your-link" target="_blank" rel="noopener">🔗 LinkedIn</a>
-            <a class="pill" href="https://github.com/your-username" target="_blank" rel="noopener">💻 GitHub</a>
-            <a class="pill" href="https://your-portfolio-domain.com" target="_blank" rel="noopener">🌐 Portfolio</a>
+            <a class="pill" href="#">🔗 LinkedIn</a>
+            <a class="pill" href="#">💻 GitHub</a>
+            <a class="pill" href="#">🌐 Portfolio</a>
           </div>
         </div>
       </div>
     </header>
 
+    <!-- MAIN GRID -->
     <main class="grid">
+
       <section class="card">
         <h2>About</h2>
         <p>
-          I build reliable embedded and Java solutions with a clear focus: technology that uplifts communities. From Arduino and IC-based circuits to GUI-driven Java apps, I translate ideas into working systems and share what I learn so others can grow too.
-          I’m currently in my 3rd semester of IT and aiming for a semester exchange to expand my research in efficient algorithms for IoT.
+          I build reliable embedded and Java solutions with a clear focus: technology that uplifts communities.
+          From Arduino and IC-based circuits to GUI-driven Java apps, I translate ideas into working systems.
         </p>
       </section>
 
       <section class="card">
         <h2>Snapshot</h2>
         <div class="list">
-          <div>• <span class="role">Focus:</span> Embedded systems, Java GUI, file handling, documentation</div>
-          <div>• <span class="role">Strengths:</span> Clear communication, mentorship mindset, project planning</div>
-          <div>• <span class="role">Goal:</span> Semester Exchange Scholarship at Telkom University, Indonesia</div>
+          <div>• <strong>Focus:</strong> Embedded systems, Java GUI, file handling</div>
+          <div>• <strong>Strengths:</strong> Clear communication, mentorship mindset</div>
+          <div>• <strong>Goal:</strong> Semester Exchange Scholarship — Telkom University</div>
         </div>
       </section>
 
@@ -111,21 +184,31 @@
         <h2>Skills</h2>
         <div class="list">
           <div>
-            <strong>Embedded & circuits:</strong>
+            <strong>Embedded & Circuits:</strong>
             <div class="tags">
-              <span class="tag">Arduino</span><span class="tag">Sensors & actuators</span><span class="tag">IC-based design</span><span class="tag">Prototyping</span>
+              <span class="tag">Arduino</span>
+              <span class="tag">Sensors</span>
+              <span class="tag">IC-based design</span>
+              <span class="tag">Prototyping</span>
             </div>
           </div>
+
           <div>
             <strong>Software:</strong>
             <div class="tags">
-              <span class="tag">Java (OOP)</span><span class="tag">Swing/JavaFX GUI</span><span class="tag">File I/O</span><span class="tag">Algorithms</span>
+              <span class="tag">Java</span>
+              <span class="tag">JavaFX/Swing</span>
+              <span class="tag">File I/O</span>
+              <span class="tag">Algorithms</span>
             </div>
           </div>
+
           <div>
             <strong>Communication:</strong>
             <div class="tags">
-              <span class="tag">Technical writing</span><span class="tag">Study plans</span><span class="tag">Humanized storytelling</span>
+              <span class="tag">Technical writing</span>
+              <span class="tag">Study plans</span>
+              <span class="tag">Storytelling</span>
             </div>
           </div>
         </div>
@@ -134,91 +217,78 @@
       <section class="card">
         <h2>Projects</h2>
         <div class="list">
+
           <div class="proj">
             <div class="row">
               <span class="role">Smart irrigation controller</span>
-              <span class="badge">Arduino • Sensors • 2024</span>
+              <span class="muted">Arduino • 2024</span>
             </div>
-            <p>Built a soil-moisture–driven irrigation system reducing manual watering and optimizing water usage for small farms.</p>
-            <div class="tags">
-              <span class="tag">Arduino</span><span class="tag">Sensor fusion</span><span class="tag">Power management</span>
-            </div>
+            <p>Built a soil-moisture–driven irrigation system improving water efficiency.</p>
           </div>
 
           <div class="proj">
             <div class="row">
               <span class="role">Java student records app</span>
-              <span class="badge">Java • Swing • File I/O • 2025</span>
+              <span class="muted">Java • 2025</span>
             </div>
-            <p>Desktop app with clean GUI to manage student records, search, and export reports—designed for low-resource environments.</p>
-            <div class="tags">
-              <span class="tag">Java</span><span class="tag">GUI</span><span class="tag">CSV export</span>
-            </div>
+            <p>Desktop app to manage student records with search & export features.</p>
           </div>
 
           <div class="proj">
             <div class="row">
               <span class="role">Community electronics bootcamp</span>
-              <span class="badge">Mentorship • 2025</span>
+              <span class="muted">2025</span>
             </div>
-            <p>Organized and taught fundamentals of circuits and microcontrollers to local students, producing 10+ working prototypes.</p>
-            <div class="tags">
-              <span class="tag">Teaching</span><span class="tag">Curriculum</span><span class="tag">Impact</span>
-            </div>
+            <p>Taught fundamentals of circuits & microcontrollers to local students.</p>
           </div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Experience & leadership</h2>
-        <div class="list">
-          <div>
-            <strong>Student mentor:</strong> Guided peers in embedded projects and Java fundamentals; reviewed documentation for clarity and rigor.
-          </div>
-          <div>
-            <strong>Technical writer:</strong> Produced step-by-step reports and study plans for scholarship applications and project replication.
-          </div>
-        </div>
+        <h2>Experience & Leadership</h2>
+        <ul class="list">
+          <li><strong>Student mentor:</strong> Guided peers in embedded projects & Java basics.</li>
+          <li><strong>Technical writer:</strong> Created study plans and project documentation.</li>
+        </ul>
       </section>
 
       <section class="card">
         <h2>Education</h2>
         <div class="list">
           <div>
-            <strong>BS Information Technology (ongoing):</strong> 3rd semester • Karachi, Sindh, Pakistan
-            <div class="muted">Aiming for exchange in Semester 4; interests in algorithmic efficiency for embedded/IoT.</div>
+            <strong>BS IT:</strong> 3rd semester • Karachi
+            <div class="muted">Interested in algorithmic efficiency for IoT systems.</div>
           </div>
-          <div>
-            <strong>Higher Secondary School (Pre-Engineering):</strong> Government Higher Secondary School Khadro • Completed 2024
-          </div>
+          <div><strong>Pre-Engineering:</strong> Govt. Higher Secondary School Khadro • 2024</div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Awards & highlights</h2>
+        <h2>Awards & Highlights</h2>
         <ul class="list">
-          <li><strong>Scholarship finalist (target):</strong> Telkom University Semester Exchange — application emphasizes impact-driven tech.</li>
-          <li><strong>Project showcase:</strong> Presented embedded prototypes addressing local resource constraints.</li>
+          <li><strong>Scholarship finalist (goal):</strong> Telkom University</li>
+          <li>Presented embedded prototypes addressing real-world constraints.</li>
         </ul>
       </section>
 
       <section class="card">
         <h2>Get in touch</h2>
-        <p>Open to collaboration, research opportunities, and mentorship initiatives focused on practical technology for real-world problems.</p>
+        <p>Open to collaboration, research opportunities, and mentorship.</p>
         <a class="cta" href="mailto:sameer@example.com">Email me</a>
       </section>
+
     </main>
 
     <footer>
-      <div class="row">
-        <span>© <span id="yr"></span> Sameer Hussain</span>
-        <span>Built with HTML & CSS • Fast and accessible</span>
-      </div>
+      <span>© <span id="yr"></span> Sameer Hussain</span>
+      <span>Built with HTML & CSS</span>
     </footer>
+
   </div>
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
